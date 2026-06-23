@@ -39,6 +39,19 @@ export default function Hero() {
         background: 'radial-gradient(ellipse at 50% 60%, rgba(184,160,106,0.06) 0%, transparent 65%)',
       }} />
 
+      {/* Logo — positioned outside any Framer Motion stacking context so mix-blend-mode:screen works */}
+      <div
+        className="absolute top-5 left-5 pointer-events-none select-none"
+        style={{ zIndex: 9, mixBlendMode: 'screen' }}
+      >
+        <img
+          src="/logo.jpg"
+          alt="PEPTILAB"
+          draggable={false}
+          style={{ width: 'clamp(85px, 22vw, 120px)', filter: 'brightness(1.1)' }}
+        />
+      </div>
+
       {/* Content */}
       <motion.div
         className="relative z-10 text-center px-6 w-full max-w-2xl mx-auto"
@@ -47,21 +60,6 @@ export default function Hero() {
         initial="hidden"
         animate="visible"
       >
-        {/* Logo */}
-        <motion.div variants={itemVariants} className="flex justify-center mb-4">
-          <img
-            src="/logo.jpg"
-            alt="PEPTILAB"
-            draggable={false}
-            className="select-none pointer-events-none"
-            style={{
-              width: 'clamp(150px, 40vw, 230px)',
-              mixBlendMode: 'screen',
-              filter: 'brightness(1.08) contrast(1.05)',
-            }}
-          />
-        </motion.div>
-
         {/* Brand tag */}
         <motion.p
           variants={itemVariants}

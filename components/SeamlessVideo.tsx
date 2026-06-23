@@ -22,6 +22,8 @@ export default function SeamlessVideo({
     const vb = refB.current;
     if (!va || !vb) return;
 
+    va.play().catch(() => {});
+
     function crossfade(from: HTMLVideoElement, to: HTMLVideoElement) {
       if (busy.current) return;
       busy.current = true;

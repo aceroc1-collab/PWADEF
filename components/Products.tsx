@@ -133,7 +133,7 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
 
   return (
     <motion.div
-      className="relative p-3 md:p-5"
+      className="relative p-5"
       style={{ background: 'var(--dark)', border: '1px solid rgba(255,255,255,0.06)' }}
       initial={{ opacity: 0, y: 24 }}
       animate={{ opacity: 1, y: 0 }}
@@ -156,30 +156,30 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
       </AnimatePresence>
 
       {/* Top accent */}
-      <div className="h-px w-full mb-3 md:mb-5" style={{ background: 'linear-gradient(90deg, transparent, rgba(184,160,106,0.4), transparent)' }} />
+      <div className="h-px w-full mb-4" style={{ background: 'linear-gradient(90deg, transparent, rgba(184,160,106,0.4), transparent)' }} />
 
-      {/* Category — desktop only */}
-      <p className="hidden md:block tracking-[0.32rem] mb-2 font-josefin" style={{ fontSize: '0.54rem', color: 'var(--gold)' }}>
+      {/* Category */}
+      <p className="tracking-[0.32rem] mb-2 font-josefin" style={{ fontSize: '0.54rem', color: 'var(--gold)' }}>
         {product.category}
       </p>
 
-      {/* Formula — desktop only */}
-      <p className="hidden md:block font-mono tracking-[0.08rem] mb-2" style={{ fontSize: '0.5rem', color: 'var(--text-muted)' }}>
+      {/* Formula */}
+      <p className="font-mono tracking-[0.08rem] mb-2" style={{ fontSize: '0.5rem', color: 'var(--text-muted)' }}>
         {product.formula}
       </p>
 
       {/* Name */}
-      <h3 className="font-cormorant font-light leading-tight mb-2 md:mb-3" style={{ fontSize: 'clamp(0.95rem, 3vw, 1.75rem)' }}>
+      <h3 className="font-cormorant font-light leading-tight mb-3" style={{ fontSize: 'clamp(1.5rem, 5vw, 1.75rem)' }}>
         {product.name}
       </h3>
 
-      {/* Description — desktop only */}
-      <p className="hidden md:block leading-7 mb-4" style={{ fontSize: '0.75rem', letterSpacing: '0.04rem', color: 'var(--text-dim)' }}>
+      {/* Description */}
+      <p className="leading-7 mb-4" style={{ fontSize: '0.75rem', letterSpacing: '0.04rem', color: 'var(--text-dim)' }}>
         {product.description}
       </p>
 
-      {/* Benefits — desktop only */}
-      <div className="hidden md:flex flex-wrap gap-2 mb-4">
+      {/* Benefits */}
+      <div className="flex flex-wrap gap-2 mb-4">
         {product.benefits.map(b => (
           <span key={b} className="tracking-[0.12rem] px-2.5 py-1 font-josefin"
             style={{ fontSize: '0.48rem', border: '1px solid rgba(255,255,255,0.07)', color: 'var(--text-muted)' }}>
@@ -189,19 +189,19 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
       </div>
 
       {/* Variant selector */}
-      <div className="flex gap-1 md:gap-2 mb-3 md:mb-5 flex-wrap">
+      <div className="flex gap-2 mb-5 flex-wrap">
         {product.variants.map((v, i) => (
           <button
             key={v.mg}
             onClick={() => setSelectedVariant(i)}
-            className="tracking-[0.04rem] md:tracking-[0.15rem] font-josefin cursor-pointer"
+            className="tracking-[0.15rem] font-josefin cursor-pointer"
             style={{
-              fontSize: 'clamp(0.36rem, 1.4vw, 0.54rem)',
+              fontSize: '0.54rem',
               border: selectedVariant === i ? '1px solid var(--gold)' : '1px solid rgba(255,255,255,0.1)',
               color: selectedVariant === i ? 'var(--gold)' : 'var(--text-muted)',
               background: selectedVariant === i ? 'rgba(184,160,106,0.08)' : 'transparent',
-              padding: '0.3rem 0.45rem',
-              minHeight: '28px',
+              padding: '0.4rem 0.7rem',
+              minHeight: '32px',
               whiteSpace: 'nowrap',
             }}
           >
@@ -211,12 +211,12 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
       </div>
 
       {/* Price + Add */}
-      <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-1.5 md:gap-4">
+      <div className="flex items-center justify-between gap-4">
         <div>
-          <span className="font-mono" style={{ fontSize: 'clamp(0.9rem, 3.5vw, 1.4rem)', color: 'var(--gold)' }}>
+          <span className="font-mono" style={{ fontSize: '1.4rem', color: 'var(--gold)' }}>
             ${variant.price}
           </span>
-          <span className="hidden md:inline tracking-[0.12rem] ml-2 font-josefin" style={{ fontSize: '0.54rem', color: 'var(--text-muted)' }}>
+          <span className="tracking-[0.12rem] ml-2 font-josefin" style={{ fontSize: '0.54rem', color: 'var(--text-muted)' }}>
             / {variant.mg}
           </span>
         </div>
@@ -224,15 +224,15 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
         <motion.button
           onClick={handleAdd}
           whileTap={{ scale: 0.95 }}
-          className="w-full md:flex-1 font-josefin cursor-pointer"
+          className="flex-1 font-josefin cursor-pointer"
           style={{
-            fontSize: 'clamp(0.38rem, 1.4vw, 0.6rem)',
-            letterSpacing: 'clamp(0.04rem, 0.5vw, 0.18rem)',
+            fontSize: '0.6rem',
+            letterSpacing: '0.18rem',
             background: added ? 'var(--gold)' : 'transparent',
             border: '1px solid rgba(184,160,106,0.4)',
             color: added ? 'var(--black)' : 'var(--gold)',
-            padding: '0.45rem 0.3rem',
-            minHeight: '34px',
+            padding: '0.55rem 0.5rem',
+            minHeight: '40px',
             transition: 'background 0.2s, color 0.2s',
           }}
         >
@@ -250,10 +250,10 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
         </motion.button>
       </div>
 
-      {/* Share — desktop only */}
+      {/* Share */}
       <button
         onClick={handleShare}
-        className="hidden md:flex items-center gap-1.5 mt-3 cursor-pointer bg-transparent border-0 opacity-60 hover:opacity-100 transition-opacity"
+        className="flex items-center gap-1.5 mt-3 cursor-pointer bg-transparent border-0 opacity-60 hover:opacity-100 transition-opacity"
         style={{ color: 'var(--text-muted)' }}
         aria-label="Compartir producto"
       >
@@ -386,22 +386,66 @@ export default function Products() {
         </motion.div>
       )}
 
-      {/* Products grid — 3 cols mobile, 2 cols tablet, 3 cols desktop */}
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={activeCategory}
-          className="grid grid-cols-3 md:grid-cols-2 lg:grid-cols-3 gap-px px-0"
-          style={{ background: 'rgba(184,160,106,0.04)' }}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.2 }}
-        >
-          {filtered.map((product, i) => (
-            <ProductCard key={product.id} product={product} index={i} />
-          ))}
-        </motion.div>
-      </AnimatePresence>
+      {/* MOBILE: horizontal snap carousel */}
+      {filtered.length > 0 && (
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeCategory + '-m'}
+            className="md:hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+          >
+            <div
+              className="overflow-x-auto"
+              style={{
+                scrollSnapType: 'x mandatory',
+                WebkitOverflowScrolling: 'touch',
+                scrollbarWidth: 'none',
+                msOverflowStyle: 'none',
+              }}
+            >
+              <div className="flex gap-3 px-5">
+                {filtered.map((product, i) => (
+                  <div
+                    key={product.id}
+                    className="flex-shrink-0"
+                    style={{ width: '82vw', scrollSnapAlign: 'start' }}
+                  >
+                    <ProductCard product={product} index={i} />
+                  </div>
+                ))}
+                <div className="flex-shrink-0 w-5" />
+              </div>
+            </div>
+            {filtered.length > 1 && (
+              <p className="text-center tracking-[0.2rem] mt-3 font-josefin px-5" style={{ fontSize: '0.44rem', color: 'var(--text-muted)' }}>
+                ← DESLIZA PARA VER MÁS →
+              </p>
+            )}
+          </motion.div>
+        </AnimatePresence>
+      )}
+
+      {/* DESKTOP: grid */}
+      {filtered.length > 0 && (
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeCategory + '-d'}
+            className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-px"
+            style={{ background: 'rgba(184,160,106,0.04)' }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+          >
+            {filtered.map((product, i) => (
+              <ProductCard key={product.id} product={product} index={i} />
+            ))}
+          </motion.div>
+        </AnimatePresence>
+      )}
     </section>
   );
 }
