@@ -22,10 +22,6 @@ export default function SeamlessVideo({
     const vb = refB.current;
     if (!va || !vb) return;
 
-    const tryPlay = () => va.play().catch(() => {});
-    tryPlay();
-    va.addEventListener('loadeddata', tryPlay, { once: true });
-
     function crossfade(from: HTMLVideoElement, to: HTMLVideoElement) {
       if (busy.current) return;
       busy.current = true;
@@ -67,6 +63,7 @@ export default function SeamlessVideo({
       <video
         ref={refA} autoPlay muted playsInline preload="auto"
         style={{ ...base, opacity }}
+        onCanPlay={e => { (e.target as HTMLVideoElement).play().catch(() => {}); }}
         onError={e => { (e.target as HTMLVideoElement).style.display = 'none'; }}
       >
         <source src={src} type="video/mp4" />

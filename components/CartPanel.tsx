@@ -65,11 +65,9 @@ export default function CartPanel() {
 
   const handleWhatsApp = () => {
     const msg = buildWhatsAppMessage(cart, cartTotal);
+    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`, '_blank');
     setShowConfetti(true);
     setSent(true);
-    setTimeout(() => {
-      window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`, '_blank');
-    }, 1500);
     setTimeout(() => setShowConfetti(false), 2800);
   };
 
