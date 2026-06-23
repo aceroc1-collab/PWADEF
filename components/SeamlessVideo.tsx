@@ -73,7 +73,6 @@ export default function SeamlessVideo({
     <>
       <video
         ref={refA} autoPlay muted playsInline preload="auto"
-        poster="data:image/gif;base64,R0lGODlhAQABAIAAAAUEBAAAACwAAAAAAQABAAACAkQBADs="
         style={{ ...base, opacity }}
         onCanPlay={e => { (e.target as HTMLVideoElement).play().catch(() => {}); }}
         onError={e => { (e.target as HTMLVideoElement).style.display = 'none'; }}
