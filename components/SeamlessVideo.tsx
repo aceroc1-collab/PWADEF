@@ -27,7 +27,9 @@ export default function SeamlessVideo({
     if (window.matchMedia('(hover: none)').matches) {
       va.loop = true;
       va.play().catch(() => {});
-      return;
+      // Second attempt after 600ms — first call can arrive before iOS is ready
+      const t = setTimeout(() => va.play().catch(() => {}), 600);
+      return () => clearTimeout(t);
     }
 
     // Desktop: seamless crossfade between video A and video B
@@ -71,6 +73,7 @@ export default function SeamlessVideo({
     <>
       <video
         ref={refA} autoPlay muted playsInline preload="auto"
+        poster="data:image/gif;base64,R0lGODlhAQABAIAAAAUEBAAAACwAAAAAAQABAAACAkQBADs="
         style={{ ...base, opacity }}
         onCanPlay={e => { (e.target as HTMLVideoElement).play().catch(() => {}); }}
         onError={e => { (e.target as HTMLVideoElement).style.display = 'none'; }}
