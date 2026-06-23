@@ -673,7 +673,7 @@ export function Footer() {
         </div>
 
         <div className="tracking-[0.1rem] leading-8 font-josefin mb-8" style={{ fontSize: '0.6rem', color: 'var(--text-muted)' }}>
-          <p className="font-light mb-1" style={{ color: 'var(--text)' }}>PEPTILAB.VE</p>
+          <p className="font-light mb-1" style={{ color: 'var(--text)' }}>PEPTILAB</p>
           <p>contacto@peptilabve.com</p>
           <p>ventas@peptilabve.com</p>
           <p className="mt-1">+58 412-9987858</p>
@@ -683,7 +683,7 @@ export function Footer() {
 
       <div className="flex justify-between items-center px-5 py-5" style={{ borderTop: '1px solid rgba(255,255,255,0.04)' }}>
         <p className="tracking-[0.16rem] font-josefin" style={{ fontSize: '0.5rem', color: 'var(--text-muted)' }}>
-          © 2024 PEPTILAB.VE
+          © 2024 PEPTILAB
         </p>
         <button
           onClick={scrollTop}
