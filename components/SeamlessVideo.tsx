@@ -22,14 +22,45 @@ export default function SeamlessVideo({
     const vb = refB.current;
     if (!va || !vb) return;
 
-    // Touch devices (iOS/Android): native loop on video A — avoids iOS restrictions
-    // on playing invisible videos and infrequent timeupdate events.
-    if (window.matchMedia('(hover: none)').matches) {
+    const isMobile = window.matchMedia('(hover: none)').matches;
+
+    if (isMobile) {
       va.loop = true;
+
+      // Restore cached poster from previous visit so iOS shows it instead of the play button
+      const posterKey = `peptilab_poster_${src.replace(/\W/g, '_')}`;
+      try {
+        const cached = localStorage.getItem(posterKey);
+        if (cached) va.poster = cached;
+      } catch {}
+
       va.play().catch(() => {});
-      // Second attempt after 600ms — first call can arrive before iOS is ready
       const t = setTimeout(() => va.play().catch(() => {}), 600);
-      return () => clearTimeout(t);
+
+      // Capture first frame with Canvas and cache it for the next visit
+      const captureFrame = () => {
+        try {
+          const canvas = document.createElement('canvas');
+          const w = va.videoWidth || 640;
+          const h = va.videoHeight || 360;
+          canvas.width = Math.min(w, 640);
+          canvas.height = Math.round((Math.min(w, 640) / w) * h);
+          const ctx = canvas.getContext('2d');
+          if (ctx) {
+            ctx.drawImage(va, 0, 0, canvas.width, canvas.height);
+            const dataUrl = canvas.toDataURL('image/jpeg', 0.55);
+            localStorage.setItem(posterKey, dataUrl);
+          }
+        } catch {}
+      };
+
+      if (va.readyState >= 2) captureFrame();
+      else va.addEventListener('loadeddata', captureFrame, { once: true });
+
+      return () => {
+        clearTimeout(t);
+        va.removeEventListener('loadeddata', captureFrame);
+      };
     }
 
     // Desktop: seamless crossfade between video A and video B
@@ -62,7 +93,7 @@ export default function SeamlessVideo({
       va.removeEventListener('timeupdate', checkA);
       vb.removeEventListener('timeupdate', checkB);
     };
-  }, [opacity]);
+  }, [opacity, src]);
 
   const base: React.CSSProperties = {
     position: 'absolute', inset: 0, width: '100%', height: '100%',
