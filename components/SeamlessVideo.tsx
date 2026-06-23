@@ -27,17 +27,21 @@ export default function SeamlessVideo({
     if (isMobile) {
       va.loop = true;
 
-      // Restore cached poster from previous visit so iOS shows it instead of the play button
+      // Restore cached poster from previous visit
       const posterKey = `peptilab_poster_${src.replace(/\W/g, '_')}`;
       try {
         const cached = localStorage.getItem(posterKey);
         if (cached) va.poster = cached;
       } catch {}
 
-      va.play().catch(() => {});
-      const t = setTimeout(() => va.play().catch(() => {}), 600);
+      const tryPlay = () => va.play().catch(() => {});
+      tryPlay();
 
-      // Capture first frame with Canvas and cache it for the next visit
+      // iOS blocks autoplay until a user gesture occurs.
+      // touchstart is a trusted gesture — play() called here always works.
+      document.addEventListener('touchstart', tryPlay, { once: true, passive: true });
+
+      // Capture first frame and cache as poster for next visit
       const captureFrame = () => {
         try {
           const canvas = document.createElement('canvas');
@@ -48,8 +52,7 @@ export default function SeamlessVideo({
           const ctx = canvas.getContext('2d');
           if (ctx) {
             ctx.drawImage(va, 0, 0, canvas.width, canvas.height);
-            const dataUrl = canvas.toDataURL('image/jpeg', 0.55);
-            localStorage.setItem(posterKey, dataUrl);
+            localStorage.setItem(posterKey, canvas.toDataURL('image/jpeg', 0.55));
           }
         } catch {}
       };
@@ -58,7 +61,7 @@ export default function SeamlessVideo({
       else va.addEventListener('loadeddata', captureFrame, { once: true });
 
       return () => {
-        clearTimeout(t);
+        document.removeEventListener('touchstart', tryPlay);
         va.removeEventListener('loadeddata', captureFrame);
       };
     }
