@@ -1,0 +1,20 @@
+{
+  "name": "PeptiLab",
+  "short_name": "PeptiLab",
+  "description": "Péptidos farmacéuticos de grado premium para investigación científica",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#050507",
+  "theme_color": "#B8A06A",
+  "orientation": "portrait-primary",
+  "lang": "es",
+  "categories": ["health", "shopping"],
+  "icons": [
+    {
+      "src": "/logo.jpg",
+      "sizes": "any",
+      "type": "image/jpeg",
+      "purpose": "any"
+    }
+  ]
+}
