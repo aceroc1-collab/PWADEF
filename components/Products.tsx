@@ -109,7 +109,7 @@ export const PRODUCTS: Product[] = [
     id: 'recovery-stack',
     category: 'BLENDS',
     formula: 'BPC-157 10 mg · TB-500 10 mg',
-    name: 'Recovery Stack',
+    name: 'BPC-157 10mg + TB-500 10mg',
     description: 'Combinación sinérgica del penta-decapéptido gástrico BPC-157 y la timosina beta-4 TB-500. El dúo más investigado en recuperación tisular avanzada, con acción citoprotectora, angiogénesis y modulación sistémica de la respuesta inflamatoria.',
     benefits: ['REGENERACIÓN TISULAR', 'MODULACIÓN INFLAMATORIA', 'ACCIÓN SINÉRGICA'],
     variants: [{ mg: '10 mg + 10 mg', price: 160 }],
@@ -278,18 +278,26 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
       </div>
 
       {/* Share */}
-      <button
+      <motion.button
         onClick={handleShare}
-        className="flex items-center gap-1.5 mt-3 cursor-pointer bg-transparent border-0 opacity-60 hover:opacity-100 transition-opacity"
-        style={{ color: 'var(--text-muted)' }}
+        whileTap={{ scale: 0.97 }}
+        className="flex items-center justify-center gap-2 w-full mt-4 cursor-pointer font-josefin tracking-[0.22rem] transition-colors duration-200"
+        style={{
+          fontSize: '0.5rem',
+          color: 'rgba(184,160,106,0.65)',
+          border: '1px solid rgba(184,160,106,0.22)',
+          background: 'transparent',
+          padding: '0.6rem 1rem',
+          minHeight: '36px',
+        }}
         aria-label="Compartir producto"
       >
-        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
           <circle cx="18" cy="5" r="3" /><circle cx="6" cy="12" r="3" /><circle cx="18" cy="19" r="3" />
           <line x1="8.59" y1="13.51" x2="15.42" y2="17.49" /><line x1="15.41" y1="6.51" x2="8.59" y2="10.49" />
         </svg>
-        <span className="tracking-[0.12rem] font-josefin" style={{ fontSize: '0.44rem' }}>COMPARTIR</span>
-      </button>
+        COMPARTIR
+      </motion.button>
     </motion.div>
   );
 }
