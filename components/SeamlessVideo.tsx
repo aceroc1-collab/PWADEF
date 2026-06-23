@@ -22,6 +22,15 @@ export default function SeamlessVideo({
     const vb = refB.current;
     if (!va || !vb) return;
 
+    // Touch devices (iOS/Android): native loop on video A — avoids iOS restrictions
+    // on playing invisible videos and infrequent timeupdate events.
+    if (window.matchMedia('(hover: none)').matches) {
+      va.loop = true;
+      va.play().catch(() => {});
+      return;
+    }
+
+    // Desktop: seamless crossfade between video A and video B
     function crossfade(from: HTMLVideoElement, to: HTMLVideoElement) {
       if (busy.current) return;
       busy.current = true;
