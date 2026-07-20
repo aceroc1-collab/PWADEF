@@ -356,11 +356,11 @@ export function Testimonials() {
   const [active, setActive] = useState(0);
 
   const items = [
-    { initials: 'RM', name: 'Dr. R. Montoya', role: 'INVESTIGADOR BIOQUÍMICO · CARACAS', text: 'La calidad del BPC-157 es excepcional. El COA fue completamente transparente y los resultados fueron consistentes con lo esperado. Atención de primer nivel.' },
-    { initials: 'AC', name: 'A. Castellanos', role: 'ESPECIALISTA EN RENDIMIENTO · VALENCIA', text: 'Excelente servicio y calidad sobresaliente. La Tirzepatida llegó perfectamente embalada y la asesoría del equipo fue invaluable durante todo el proceso.' },
-    { initials: 'MP', name: 'M. Pérez', role: 'PROFESIONAL DE LA SALUD · MARACAIBO', text: 'PEPTILAB es la referencia en Venezuela. La consistencia entre lotes, el embalaje impecable y el nivel de documentación no tienen comparación en el mercado local.' },
-    { initials: 'JV', name: 'J. Villalobos', role: 'ATLETA ÉLITE · BARQUISIMETO', text: 'El Recovery Stack (BPC-157 + TB-500) superó todas mis expectativas. El proceso de compra por WhatsApp fue rápido y la entrega discreta. Totalmente recomendado.' },
-    { initials: 'LS', name: 'L. Salazar', role: 'MÉDICO INTERNISTA · CARACAS', text: 'Calidad farmacéutica real. Los COA son detallados, el HPLC es verificable y el embalaje mantiene la cadena de frío perfectamente. La mejor fuente local de péptidos.' },
+    { initials: 'CG', name: 'Carlos Gil', role: 'FISIOTERAPEUTA · @fisiocarlosgil', text: 'Desde que incorporamos Wolverine Stack como apoyo dentro del proceso de recuperación, hemos observado una evolución más rápida y una mejora notable en varios pacientes.' },
+    { initials: 'DN', name: 'David Navarrete', role: 'PADELISTA PROFESIONAL · @davidnavarrete1', text: 'Como atleta, siempre busco sentirme más ligero, definido y eficiente dentro de la cancha. Desde que incorporé Retatrutide a mi preparación, he notado cambios positivos en mi composición corporal, especialmente en la reducción de grasa y en una apariencia más atlética.' },
+    { initials: 'WV', name: 'Wendy Villar', role: 'FISICOCULTURISTA · @frozenfit_', text: 'En una etapa de definición, cada detalle cuenta. Desde que incorporé Tesamorelin a mi preparación, he notado una apariencia más marcada en la zona abdominal y una mejor evolución en mi composición corporal.' },
+    { initials: 'OO', name: 'Oriana Oropeza', role: 'ENTRENADORA PERSONAL · @orioropeza', text: 'Como entrenadora, he visto una evolución muy positiva en varios de mis asesorados desde que incorporaron péptidos dentro de un plan integral y bajo supervisión profesional. Hemos observado mejoras en su composición corporal, recuperación y rendimiento.' },
+    { initials: 'DV', name: 'Dayana Vicentelli', role: 'ENTRENADORA CROSSFIT · @dayavicentelli', text: 'He visto cambios muy positivos en varios de mis atletas, especialmente en su recuperación, energía y rendimiento durante los entrenamientos.' },
   ];
 
   return (
