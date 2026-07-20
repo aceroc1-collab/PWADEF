@@ -356,11 +356,11 @@ export function Testimonials() {
   const [active, setActive] = useState(0);
 
   const items = [
-    { initials: 'CG', name: 'Carlos Gil', role: 'FISIOTERAPEUTA · @fisiocarlosgil', text: 'Desde que incorporamos Wolverine Stack como apoyo dentro del proceso de recuperación, hemos observado una evolución más rápida y una mejora notable en varios pacientes.' },
-    { initials: 'DN', name: 'David Navarrete', role: 'PADELISTA PROFESIONAL · @davidnavarrete1', text: 'Como atleta, siempre busco sentirme más ligero, definido y eficiente dentro de la cancha. Desde que incorporé Retatrutide a mi preparación, he notado cambios positivos en mi composición corporal, especialmente en la reducción de grasa y en una apariencia más atlética.' },
-    { initials: 'WV', name: 'Wendy Villar', role: 'FISICOCULTURISTA · @frozenfit_', text: 'En una etapa de definición, cada detalle cuenta. Desde que incorporé Tesamorelin a mi preparación, he notado una apariencia más marcada en la zona abdominal y una mejor evolución en mi composición corporal.' },
-    { initials: 'OO', name: 'Oriana Oropeza', role: 'ENTRENADORA PERSONAL · @orioropeza', text: 'Como entrenadora, he visto una evolución muy positiva en varios de mis asesorados desde que incorporaron péptidos dentro de un plan integral y bajo supervisión profesional. Hemos observado mejoras en su composición corporal, recuperación y rendimiento.' },
-    { initials: 'DV', name: 'Dayana Vicentelli', role: 'ENTRENADORA CROSSFIT · @dayavicentelli', text: 'He visto cambios muy positivos en varios de mis atletas, especialmente en su recuperación, energía y rendimiento durante los entrenamientos.' },
+    { initials: 'CG', name: 'Carlos Gil', role: 'FISIOTERAPEUTA', handle: '@fisiocarlosgil', text: 'Desde que incorporamos Wolverine Stack como apoyo dentro del proceso de recuperación, hemos observado una evolución más rápida y una mejora notable en varios pacientes.' },
+    { initials: 'DN', name: 'David Navarrete', role: 'PADELISTA PROFESIONAL', handle: '@davidnavarrete1', text: 'Como atleta, siempre busco sentirme más ligero, definido y eficiente dentro de la cancha. Desde que incorporé Retatrutide a mi preparación, he notado cambios positivos en mi composición corporal, especialmente en la reducción de grasa y en una apariencia más atlética.' },
+    { initials: 'WV', name: 'Wendy Villar', role: 'FISICOCULTURISTA', handle: '@frozenfit_', text: 'En una etapa de definición, cada detalle cuenta. Desde que incorporé Tesamorelin a mi preparación, he notado una apariencia más marcada en la zona abdominal y una mejor evolución en mi composición corporal.' },
+    { initials: 'OO', name: 'Oriana Oropeza', role: 'ENTRENADORA PERSONAL', handle: '@orioropeza', text: 'Como entrenadora, he visto una evolución muy positiva en varios de mis asesorados desde que incorporaron péptidos dentro de un plan integral y bajo supervisión profesional. Hemos observado mejoras en su composición corporal, recuperación y rendimiento.' },
+    { initials: 'DV', name: 'Dayana Vicentelli', role: 'ENTRENADORA CROSSFIT', handle: '@dayavicentelli', text: 'He visto cambios muy positivos en varios de mis atletas, especialmente en su recuperación, energía y rendimiento durante los entrenamientos.' },
   ];
 
   return (
@@ -418,7 +418,10 @@ export function Testimonials() {
                 {t.initials}
               </div>
               <div>
-                <p className="tracking-[0.12rem] font-josefin" style={{ fontSize: '0.65rem', color: 'var(--text)' }}>{t.name}</p>
+                <div className="flex items-center gap-1.5 flex-wrap">
+                  <p className="tracking-[0.12rem] font-josefin" style={{ fontSize: '0.65rem', color: 'var(--text)' }}>{t.name}</p>
+                  <p className="tracking-[0.06rem] font-josefin" style={{ fontSize: '0.65rem', color: 'var(--gold)' }}>{t.handle}</p>
+                </div>
                 <p className="tracking-[0.06rem] mt-0.5 font-josefin" style={{ fontSize: '0.5rem', color: 'var(--text-dim)' }}>{t.role}</p>
               </div>
             </div>
