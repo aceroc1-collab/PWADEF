@@ -360,7 +360,7 @@ export function Testimonials() {
     { initials: 'DN', name: 'David Navarrete', role: 'PADELISTA PROFESIONAL', handle: '@davidnavarrete1', text: 'Como atleta, siempre busco sentirme más ligero, definido y eficiente dentro de la cancha. Desde que incorporé Retatrutide a mi preparación, he notado cambios positivos en mi composición corporal, especialmente en la reducción de grasa y en una apariencia más atlética.' },
     { initials: 'WV', name: 'Wendy Villar', role: 'FISICOCULTURISTA', handle: '@frozenfit_', text: 'En una etapa de definición, cada detalle cuenta. Desde que incorporé Tesamorelin a mi preparación, he notado una apariencia más marcada en la zona abdominal y una mejor evolución en mi composición corporal.' },
     { initials: 'OO', name: 'Oriana Oropeza', role: 'ENTRENADORA PERSONAL', handle: '@orioropeza', text: 'Como entrenadora, he visto una evolución muy positiva en varios de mis asesorados desde que incorporaron péptidos dentro de un plan integral y bajo supervisión profesional. Hemos observado mejoras en su composición corporal, recuperación y rendimiento.' },
-    { initials: 'DV', name: 'Dayana Vicentelli', role: 'ENTRENADORA CROSSFIT', handle: '@dayavicentelli', text: 'He visto cambios muy positivos en varios de mis atletas, especialmente en su recuperación, energía y rendimiento durante los entrenamientos.' },
+    { initials: 'MF', name: 'Medanos Fit', role: 'SISTEMA DE ENTRENAMIENTO FUNCIONAL', handle: '@medanosfit', text: 'He visto cambios muy positivos en varios de mis atletas, especialmente en su recuperación, energía y rendimiento durante los entrenamientos.' },
   ];
 
   return (
